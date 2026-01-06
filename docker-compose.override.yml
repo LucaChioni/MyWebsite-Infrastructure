@@ -1,0 +1,7 @@
+services:
+  backend:
+    command: ["sleep", "infinity"]
+    volumes:
+      - ./backend:/app
+      - ~/.ssh:/root/.ssh:ro
+    working_dir: /app
