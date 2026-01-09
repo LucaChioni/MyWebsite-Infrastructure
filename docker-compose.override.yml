@@ -5,3 +5,10 @@ services:
       - ./backend:/app
       - ~/.ssh:/root/.ssh:ro
     working_dir: /app
+
+  db:
+    ports:
+      - "5432:5432"
+    networks:
+      - internal
+      - web
