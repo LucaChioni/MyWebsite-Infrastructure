@@ -14,6 +14,7 @@ services:
     networks:
       - web
       - internal
+    restart: unless-stopped
 
   backend:
     build: ./backend
@@ -30,6 +31,7 @@ services:
       - web
     volumes:
       - ./backend:/app
+    restart: unless-stopped
 
   db:
     image: postgres:16
@@ -41,6 +43,7 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - internal
+    restart: unless-stopped
     # NIENTE ports: => non esposto all'esterno!
 
 volumes:

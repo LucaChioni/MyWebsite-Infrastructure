@@ -1,3 +1,7 @@
+{
+  email tua-email@dominio.it
+}
+
 lucachioni.com, www.lucachioni.com {
   root * /srv
   file_server
