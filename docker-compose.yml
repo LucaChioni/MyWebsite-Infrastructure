@@ -43,8 +43,9 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - internal
+    ports:
+      - "127.0.0.1:5432:5432"
     restart: unless-stopped
-    # NIENTE ports: => non esposto all'esterno!
 
 volumes:
   pgdata:
