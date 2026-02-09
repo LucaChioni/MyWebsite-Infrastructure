@@ -1,4 +1,8 @@
-lucachioni.com, www.lucachioni.com {
+www.lucachioni.com {
+  redir https://lucachioni.com{uri} permanent
+}
+
+lucachioni.com {
   root * /srv
   file_server
 
