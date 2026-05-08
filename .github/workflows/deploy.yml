@@ -30,6 +30,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /opt/sito_web/
-            git pull origin master
+            git pull
             docker compose up -d --build
             docker image prune -f
