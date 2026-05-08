@@ -29,8 +29,6 @@ services:
     networks:
       - internal
       - web
-    volumes:
-      - ./backend:/app
     restart: unless-stopped
 
   db:
@@ -45,7 +43,6 @@ services:
       - "5432:5432"
     networks:
       - internal
-      - web
     restart: unless-stopped
 
 volumes:
