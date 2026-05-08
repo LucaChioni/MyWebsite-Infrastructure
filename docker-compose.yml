@@ -43,6 +43,7 @@ services:
       - "5432:5432"
     networks:
       - internal
+      - web
     restart: unless-stopped
 
 volumes:
