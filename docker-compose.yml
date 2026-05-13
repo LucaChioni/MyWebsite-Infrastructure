@@ -60,4 +60,3 @@ volumes:
 networks:
   web:
   internal:
-    internal: true
