@@ -29,6 +29,10 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
+            cd /opt/sito_web/frontend
+            git pull
+            cd /opt/sito_web/backend
+            git pull
             cd /opt/sito_web/
             git pull
             rm docker-compose.override.yml
