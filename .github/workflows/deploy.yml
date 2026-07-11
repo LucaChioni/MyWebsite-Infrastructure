@@ -29,13 +29,13 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /opt/sito_web/frontend
+            cd /opt/personal-website/frontend
             git pull
 
-            cd /opt/sito_web/backend
+            cd /opt/personal-website/backend
             git pull
 
-            cd /opt/sito_web/
+            cd /opt/personal-website/
             git pull
             rm docker-compose.override.yml
 

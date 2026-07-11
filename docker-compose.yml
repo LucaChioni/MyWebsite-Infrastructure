@@ -1,29 +1,4 @@
 services:
-  nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./frontend:/srv:ro
-      - certbot_data:/var/www/certbot:ro
-      - certbot_config:/etc/letsencrypt:ro
-    depends_on:
-      - backend
-    networks:
-      - web
-      - internal
-    restart: unless-stopped
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certbot_data:/var/www/certbot
-      - certbot_config:/etc/letsencrypt
-    networks:
-      - web
-
   backend:
     build: ./backend
     environment:
@@ -37,6 +12,7 @@ services:
         condition: service_healthy
     networks:
       - internal
+      - proxy
     restart: unless-stopped
 
   db:
@@ -60,9 +36,8 @@ services:
 
 volumes:
   pgdata:
-  certbot_data:
-  certbot_config:
 
 networks:
-  web:
   internal:
+  proxy:
+    name: reverse-proxy

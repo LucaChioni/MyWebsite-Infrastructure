@@ -5,7 +5,4 @@ Infrastructure and deployment configuration for my [Website](https://lucachioni.
 ## Stack
 
 - Docker
-- Nginx
 - PostgreSQL
-- Certbot
-- Deployment scripts/configuration
