@@ -37,7 +37,6 @@ jobs:
 
             cd /opt/personal-website/
             git pull
-            rm docker-compose.override.yml
 
             docker compose up -d --build --remove-orphans
             docker system prune -f
