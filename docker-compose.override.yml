@@ -1,0 +1,12 @@
+services:
+  backend:
+    restart: "no"
+    command: ["sleep", "infinity"]
+    volumes:
+      - ./backend:/app
+      - ${SSH_AUTH_SOCK}:/ssh-agent
+    environment:
+      SSH_AUTH_SOCK: /ssh-agent
+
+  db:
+    restart: "no"
