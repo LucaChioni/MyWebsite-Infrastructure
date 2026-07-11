@@ -11,8 +11,10 @@ services:
       db:
         condition: service_healthy
     networks:
-      - internal
-      - reverse-proxy
+      internal:
+      reverse-proxy:
+        aliases:
+          - personal-website-backend
     restart: unless-stopped
 
   db:
