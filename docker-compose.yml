@@ -12,7 +12,7 @@ services:
         condition: service_healthy
     networks:
       - internal
-      - proxy
+      - reverse-proxy
     restart: unless-stopped
 
   db:
@@ -39,5 +39,6 @@ volumes:
 
 networks:
   internal:
-  proxy:
+  reverse-proxy:
+    external: true
     name: reverse-proxy
