@@ -1,17 +1,12 @@
 services:
   backend:
     build: ./backend
-    command: ["sleep", "infinity"]
-    volumes:
-      - ./backend:/app
-      - ${SSH_AUTH_SOCK}:/ssh-agent
     environment:
       DB_HOST: db
       DB_PORT: 5432
       DB_NAME: ${POSTGRES_DB}
       DB_USER: ${POSTGRES_USER}
       DB_PASSWORD: ${POSTGRES_PASSWORD}
-      SSH_AUTH_SOCK: /ssh-agent
     depends_on:
       db:
         condition: service_healthy
@@ -20,7 +15,7 @@ services:
       reverse-proxy:
         aliases:
           - personal-website-backend
-    restart: "no"
+    restart: unless-stopped
 
   db:
     image: postgres:16
@@ -34,13 +29,9 @@ services:
       - "127.0.0.1:5432:5432"
     networks:
       - internal
-    restart: "no"
+    restart: unless-stopped
     healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
-        ]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 5s
       timeout: 5s
       retries: 10
